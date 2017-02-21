@@ -1,12 +1,44 @@
-<!DOCTYPE html>
-<html>
+<% include header %>
+<main>
+  <div class="parallax-container">
+      <div class="parallax"><img src="boat.jpg" style="display: block; transform: translate3d(-50%, 400px, 0px);"></div>
+    </div>
+    <div class="section white">
+      <div class="row container">
+        <h2 class="header">Welcom to Twin Lakes Jet Ski</h2>
+        <p class="flow-text">Jet Ski and Boat Rentals at Twin Lakes Jet Ski are an exciting adventure for young and old alike. Within minutes of leaving our dock on lake Oconee or Sinclair you will be in your own world, skimming along or cascading over waves on one of our Yamaha waverunners. You determine the speed and thrill level of your Jet Ski adventure. Jet Skis are the way to go for exploring, when you're on a time restraint and need agility and speed in your craft; or perhaps because they're personal and you become part of a powerful machine that ignites your adrenaline...</p>
+        <h3 class="header">No experience is needed to ride!</h3>
+        <p class="flow-text">We go over everything you need to know and our knowledgeable and trained staff is there to make sure you are comfortable with your Ski. You must have a valid driver's license to drive. A valid credit card is required for every rental. Call us at (478) 234-3446- to book your Jet Ski adventure!     <strong>16 to drive (with guardian) - 18 to rent</strong></p>
+        <h3 class="header">Ski and Wake Tower Boats</h3>
+        <p class="flow-text">Twin Lakes has both ski boats and a boat with a wake tower. The 21 ft Chaparral ski boat has a capacity of 10 persons with a 4.3 liter Mercury engine for skiing. The 20 ft Chaparral H2O WAKE TOWER boat has a capacity of 9 with a 4.5 liter Mercury. The 21 ft Cobalt with a 5.0 Litre has a capacity of 12. Tow ropes, tube rental, and full ski package rentals available.</p>
+        <h3 class="header">Pontoon Boats</h3>
+        <p class="flow-text">If cruising is more you style we have pontoon boats available. All of our pontoons are 22 ft in length and have 90 hp Four Stroke engines capable of tubing. Although the rated capacity is more we limit them to 10 persons. They come with GPS/Fish finders, canopy top, and a stereo with smart phone USB port hookups. Some have live bait wells.</p>
+        <h3 class="header">Lake Oconee</h3>
+        <p class="flow-text">Lake Oconee is Georgia's second largest lake, alluring boaters into the picturesque water to jet ski,wakeboard, tube, ski, fish, swim and play outside. Lake Oconee has a sand bar that attracts crowds of friendly boaters during the weekends, and the sunrises and sunsets of Georgia are daily celebrations for residents and visitors of Lake Oconee.
+        </p>
+        <h3 class="header">Lake Sinclair</h3>
+        <p class="flow-text">Lake Sinclair, the sister lake to the south, is fed from the Oconee River passing thru Wallace Dam, Little River and several major creeks. Both lakes are surrounded by an area rich in Georgia history with many superb examples of architecture from the state's antebellum period.</p>
+        <p class="flow-text"><strong>As you cruise around the shores surrounding the lake you'll discover an incredible abundance of wildlife.</strong>Since the area is a wildlife preserve, deer, geese, beaver, raccoons, turkey and many other animals roam about freely. It is not unusual to spot deer drinking from the clean, clear water, or to see a family of raccoons fishing or bathing in the lake. Bird watching is also a great activity around the lake. Hummingbirds, blue heron, ospreys, eagles, woodpeckers, and other birds can be spotted frequently. Canadian geese paddle in and out of the many fingers of Lake Oconee, and the lake is so full of fish that you can very often see them jumping out of the water.</p>
+
+      </div>
+    </div>
+  <!--
   <head>
-    <!-- the <%= title %> comes from the index.js file, title: Twin Lakes Jet Ski -->
+     the <%= title %> comes from the index.js file, title: Twin Lakes Jet Ski
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+     <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-  </body>
-</html>
+  </body> -->
+</main>
+
+<script>
+    $(document).ready(function(){
+
+      $(".button-collapse").sideNav();
+
+      $('.parallax').parallax();
+    });
+  </script>

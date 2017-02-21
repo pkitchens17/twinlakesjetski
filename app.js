@@ -25,6 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
+// these allow linking to the css pages and whatever else
+app.use('/js', express.static(__dirname + '/node_modules/materialize-css/dist/js'));
+app.use('/css', express.static(__dirname + '/node_modules/materialize-css/dist/css'));
+app.use('/jsq', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use(express.static(__dirname + '/public/style'));
+app.use(express.static(__dirname + '/public/images'));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -42,5 +49,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
