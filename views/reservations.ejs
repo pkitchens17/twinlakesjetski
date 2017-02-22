@@ -1,0 +1,73 @@
+<% include header %>
+<main>
+
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+            <!-- input field for first name-->
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">First Name</label>
+        </div>
+        <!-- input field for last name-->
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Last Name</label>
+        </div>
+      </div>
+
+        <div class="row">
+          <!-- input field for Phone number-->
+          <div class="input-field col s6">
+            <i class="material-icons prefix">phone</i>
+            <input id="icon_telephone" type="tel" class="validate">
+            <label for="icon_telephone">Telephone</label>
+          </div>
+            <!-- input field for Phone number-->
+            <div class="input-field col s6">
+              <i class="material-icons prefix">markunread_mailbox</i>
+              <input id="icon_telephone" type="tel" class="validate">
+              <label for="icon_telephone">Email</label>
+            </div>
+
+          </div>
+
+      <!-- dropdown menu for location -->
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">add_location</i>
+          <select>
+            <option value="" disabled selected>Choose your Location</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+          </select>
+        <!--  <label>Location</label>--> <!-- took this out until it can be added well aesthetically --> 
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+</main>
+
+<!-- initializing jquery for dropdown locations -->
+<script>
+
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+
+</script>
+
+<script>
+    $(document).ready(function(){
+
+      $(".button-collapse").sideNav();
+
+      $('.parallax').parallax();
+    });
+  </script>

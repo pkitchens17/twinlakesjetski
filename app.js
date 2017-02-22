@@ -22,6 +22,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//code for getting ejs files for links
+//reservation page
+app.get('/reservations', function(req, res) {
+  res.render('reservations.ejs');
+})
+
 app.use('/', index);
 app.use('/users', users);
 
