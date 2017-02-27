@@ -20,6 +20,8 @@
     "mongoose": "latest",
     "passport-local": "latest",
     "passport": "latest",
-    "multer": "latest"
+    "multer": "latest",
+    "pickadate": "latest"
+
   }
 }

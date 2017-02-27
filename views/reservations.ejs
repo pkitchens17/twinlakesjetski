@@ -1,9 +1,9 @@
 <% include header %>
 <main>
 
-
+<!--puts the form within a container. checkout http://materializecss.com/grid.html -->
   <div class="row">
-    <form class="col s12">
+    <form class="container">
       <div class="row">
             <!-- input field for first name-->
         <div class="input-field col s6">
@@ -35,21 +35,117 @@
 
           </div>
 
-      <!-- dropdown menu for location -->
+
       <div class="row">
-        <div class="input-field col s6">
+            <!-- dropdown menu for location -->
+        <div class="input-field col s6 m6">
           <i class="material-icons prefix">add_location</i>
           <select>
             <option value="" disabled selected>Choose your Location</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
+            <option value="Lake Oconee">Lake Oconee</option>
+            <option value="Lake Sinclair">Lake Sinclair</option>
           </select>
-        <!--  <label>Location</label>--> <!-- took this out until it can be added well aesthetically --> 
+        <!--  <label>Location</label>--> <!-- took this out until it can be added well aesthetically -->
+        </div>
+
+
+
+
+      <!-- dropdown menu for Vehicle type -->
+        <div class="input-field col s6 m6">
+          <i class="material-icons prefix">directions_boat</i>
+          <select>
+            <option value="" disabled selected>Choose your Vehicle</option>
+            <option value="Lake Oconee">Pontoon</option>
+            <option value="Lake Sinclair">Ski Boat</option>
+            <option value="Lake Sinclair">Jetski</option>
+          </select>
+        <!--  <label>Vehicle</label>--> <!-- took this out until it can be added well aesthetically -->
         </div>
       </div>
+
+
+
+
+      <!-- date picker for the reservation. -->
+      <!-- start date-->
+      <div class="row">
+        <div class="input-field col s6 m6">
+          <i class="material-icons prefix">event</i>
+          <label for="startdate" class="datepicker">Start Date</label>
+          <input id="startdate" class="datepicker">
+        </label>
+        </div>
+
+
+
+        <!--end date-->
+        <div class="input-field col s6 m6">
+          <i class="material-icons prefix">event</i>
+
+          <label for="enddate" class="datepicker">End Date</label>
+          <input id="enddate" class="datepicker">
+
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class ="input-field col s6 m6">
+          <i class="material-icons prefix">access_time</i>
+          <label for="starttime" class="timepicker">Start Time</label>
+            <input id="starttime" class="timepicker">
+        </div>
+
+        <div class ="input-field col s6 m6">
+          <i class="material-icons prefix">access_time</i>
+          <label for="endtime" class="timepicker">End Time</label>
+            <input id="endtime" class="timepicker">
+          </label>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+
+
+        <!-- Switch -->
+          <div class="switch">
+            <label>
+              Tube desired for $35? No
+              <input type="checkbox">
+              <span class="lever"></span>
+              Yes
+            </label>
+          </div>
+        </div>
+
+      <!-- input field for credit card-->
+      <div class ="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">credit_card</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">Credit Card</label>
+        </div>
+      </div>
+
+      <!-- submission button for the reservation form =-->
+      <div class = "row">
+        <div class="col s6 offset-s6">
+          <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>Submit</a>
+        </div>
+      </div>
+
+
+
+
+
     </form>
   </div>
-
+</div>
 
 
 </main>
@@ -59,8 +155,28 @@
 
   $(document).ready(function() {
     $('select').material_select();
+
+    //  At this time, not all pickadate.js options are working with our implementation - "materialize website http://materializecss.com/forms.html"
+    $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 4 // Creates a dropdown of 15 years to control year
+    });
+
+  // this is where the script for the pickatime functionshould go. Need to figure out how to get this working
+
+    $('.timepicker').pickatime();
+
+
   });
 
+
+
+</script>
+
+
+<!-- this is where the script for the pickatime functionshould go. Need to figure out how to get this working -->
+<script>
+$('.timepicker').pickatime();
 </script>
 
 <script>
@@ -71,3 +187,5 @@
       $('.parallax').parallax();
     });
   </script>
+<!-- import pickatime-->
+  <script type="text/javascript" src="pat/picker.time.js"></script>
