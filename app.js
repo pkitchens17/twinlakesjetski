@@ -36,6 +36,7 @@ app.use('/users', users);
 app.use('/js', express.static(__dirname + '/node_modules/materialize-css/dist/js'));
 app.use('/css', express.static(__dirname + '/node_modules/materialize-css/dist/css'));
 app.use('/jsq', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use("/pat", express.static(__dirname +'/node_modules/pickadate/lib'));
 app.use(express.static(__dirname + '/public/style'));
 app.use(express.static(__dirname + '/public/images'));
 
