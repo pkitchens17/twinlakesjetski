@@ -91,14 +91,15 @@
 
 
 
-
+      <!-- time picker -->
+      <!-- Start timer-->
       <div class="row">
         <div class ="input-field col s6 m6">
           <i class="material-icons prefix">access_time</i>
           <label for="starttime" class="timepicker">Start Time</label>
             <input id="starttime" class="timepicker">
         </div>
-
+        <!-- end time -->
         <div class ="input-field col s6 m6">
           <i class="material-icons prefix">access_time</i>
           <label for="endtime" class="timepicker">End Time</label>
@@ -110,8 +111,6 @@
 
 
       <div class="row">
-
-
         <!-- Switch -->
           <div class="switch">
             <label>
@@ -174,10 +173,7 @@
 </script>
 
 
-<!-- this is where the script for the pickatime functionshould go. Need to figure out how to get this working -->
-<script>
-$('.timepicker').pickatime();
-</script>
+
 
 <script>
     $(document).ready(function(){
@@ -187,5 +183,6 @@ $('.timepicker').pickatime();
       $('.parallax').parallax();
     });
   </script>
-<!-- import pickatime-->
+  
+<!-- import pickatime -->
   <script type="text/javascript" src="pat/picker.time.js"></script>
