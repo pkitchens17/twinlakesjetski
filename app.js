@@ -6,7 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var reservations = require('./routes/reservations');
+
+
+var configDB = require('./config/database.js');
+var db = mongoose.connect(configDB.url);
+
 
 var app = express();
 
@@ -30,7 +35,7 @@ app.get('/reservations', function(req, res) {
 })
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/reservations', reservations);
 
 // these allow linking to the css pages and whatever else
 app.use('/js', express.static(__dirname + '/node_modules/materialize-css/dist/js'));
