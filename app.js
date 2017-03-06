@@ -8,9 +8,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var reservations = require('./routes/reservations');
 
+
 var mongoose = require('mongoose');
 
-
+//Pulling in the database url from /config/database.js
 var configDB = require('./config/database.js');
 var db = mongoose.connect(configDB.url);
 
@@ -34,10 +35,41 @@ app.use(express.static(path.join(__dirname, 'public')));
 //reservation page
 app.get('/reservations', function(req, res) {
   res.render('reservations.ejs');
-})
+});
+
+//routing for prices page
+app.get('/prices', function(req, res){
+  res.render('prices.ejs');
+});
+
+//routing for jetski page
+app.get('/jetskis', function(req, res) {
+  res.render('jetskis.ejs');
+});
+
+//routing for whattobring page
+app.get('/whattobring', function(req, res) {
+  res.render('whattobring.ejs');
+});
+
+app.get('/directionsandcontact', function(req, res) {
+  res.render('directionsandcontact.ejs');
+});
+
+app.get('/aboutus', function(req, res) {
+  res.render('aboutus.ejs');
+});
+
+app.get('/admin', function(req, res) {
+  res.render('admin.ejs');
+});
+
+
+
 
 app.use('/', index);
 app.use('/reservations', reservations);
+
 
 // these allow linking to the css pages and whatever else
 app.use('/js', express.static(__dirname + '/node_modules/materialize-css/dist/js'));
