@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var reservations = require('./routes/reservations');
 
+var mongoose = require('mongoose');
+
 
 var configDB = require('./config/database.js');
 var db = mongoose.connect(configDB.url);

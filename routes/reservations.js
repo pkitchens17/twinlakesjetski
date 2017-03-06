@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 //importing the reservation schema
-var database = require('reservationsdb.js');
+var database = require('./reservationsdb.js');
 
 module.exports = function(){
   /* GET users listing. */

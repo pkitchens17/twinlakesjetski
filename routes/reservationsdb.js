@@ -4,7 +4,7 @@
 *
 *
 */
-var mongodb = require('mongodb');
+var mongoose = require('mongoose');
 
 
 //creating the schema for the database
