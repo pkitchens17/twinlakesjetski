@@ -73,7 +73,7 @@
         <div class="input-field col s6 m6">
           <i class="material-icons prefix">event</i>
           <label for="startdate" class="datepicker">Start Date</label>
-          <input id="startdate" class="datepicker" name="startDate">
+          <input id="startdate" class="picker" name="startDate">
         </label>
         </div>
 
@@ -155,11 +155,41 @@
   $(document).ready(function() {
     $('select').material_select();
 
+/*
     //  At this time, not all pickadate.js options are working with our implementation - "materialize website http://materializecss.com/forms.html"
     $('.datepicker').pickadate({
+      dateFormat: "mm/dd/yy",  //formating of text in input field
+      min: 0,  //forces calendar to show only present and future dates
+      max:  365, //allows reservations up to 365 days in advance
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 4 // Creates a dropdown of 15 years to control year
+    selectYears: 4, // Creates a dropdown of 15 years to control year
+    closeOnSelect: true //Causes the datepicker to close when a date is selected. setting to false will keep it open.
     });
+*/
+
+//The api for the datepicker is here http://amsul.ca/pickadate.js/api/
+
+   var $input = $('.datepicker').pickadate(
+
+
+    )
+
+    var picker = $input.pickadate('picker')
+
+    /*
+    // Using arrays formatted as [YEAR, MONTH, DATE].
+picker.set('select', [2015, 3, 20])
+
+// Using JavaScript Date objects.
+picker.set('select', new Date(2015, 3, 30))
+
+// Using positive integers as UNIX timestamps.
+picker.set('select', 1429970887654)
+
+// Using a string along with the parsing format (defaults to `format` option).
+picker.set('select', '2016-04-20', { format: 'mm-dd-yyyy' })
+
+*/
 
   // this is where the script for the pickatime functionshould go. Need to figure out how to get this working
 
