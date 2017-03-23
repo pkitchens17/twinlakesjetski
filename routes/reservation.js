@@ -2,7 +2,7 @@ var express = require('express');
 var reservation = express.Router();
 //importing the reservation schema
 var database = require('./reservationsdb.js');
-
+var router = express.Router();
 //code for getting ejs files for links
 //reservation page
 reservation.get('/reservations', function(req, res) {
