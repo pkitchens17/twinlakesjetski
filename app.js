@@ -6,8 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var reservations = require('./routes/reservations');
+var reservations = require('./routes/reservation');
 
+//var router = express.Router();//newly added
+var app = express();
 
 var mongoose = require('mongoose');
 
@@ -16,7 +18,7 @@ var configDB = require('./config/database.js');
 var db = mongoose.connect(configDB.url);
 
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,47 +30,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+//app.use(router); //newly added
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//code for getting ejs files for links
-//reservation page
-app.get('/reservations', function(req, res) {
-  res.render('reservations.ejs');
-});
-
-//routing for prices page
-app.get('/prices', function(req, res){
-  res.render('prices.ejs');
-});
-
-//routing for jetski page
-app.get('/jetskis', function(req, res) {
-  res.render('jetskis.ejs');
-});
-
-//routing for whattobring page
-app.get('/whattobring', function(req, res) {
-  res.render('whattobring.ejs');
-});
-
-app.get('/directionsandcontact', function(req, res) {
-  res.render('directionsandcontact.ejs');
-});
-
-app.get('/aboutus', function(req, res) {
-  res.render('aboutus.ejs');
-});
-
-app.get('/admin', function(req, res) {
-  res.render('admin.ejs');
-});
-
-
-
-
 app.use('/', index);
-app.use('/reservations', reservations);
+app.use('/reservation', reservations);
+
+
 
 
 // these allow linking to the css pages and whatever else
