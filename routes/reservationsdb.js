@@ -11,27 +11,28 @@ var mongoose = require('mongoose');
 var  reservationsSchema = mongoose.Schema({
 
     reservations :{
-      boatID      : String,
+      boatID      :  { type: String, lowercase:true},
       startTime   : String,
       endTime     : String,
       startDate   : String,
       endDate     : String,
-      tube        : String,
+      tube        : Boolean,
       cost        : String,
-      firstName   : String,
-      lastName    : String,
+      firstName   : { type: String, lowercase:true},
+      lastName    : { type: String, lowercase:true},
       phoneNumber : String,
-      email       : String
+      email       :  { type: String, lowercase:true},
 
     },
 
     boats :{
       boatID    : String,
-      boatType  : String,
-      location  : String
+      boatType  :  { type: String, lowercase:true},
+      location  :  { type: String, lowercase:true},
     }
 
 });
+
 
 
 module.exports = mongoose.model('reservations', reservationsSchema);
