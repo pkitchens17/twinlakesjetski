@@ -3,7 +3,7 @@
 
 <!--puts the form within a container. checkout http://materializecss.com/grid.html -->
 
-    <form class="container" method="POST" action="/reservations">
+    <form class="container" method="POST" action="/reservation/reservations">
       <div class="row">
             <!-- input field for first name-->
         <div class="input-field col s6">
@@ -51,9 +51,9 @@
           <i class="material-icons prefix">directions_boat</i>
           <select id ="vehicle" name="vehicle">
             <option value="" disabled selected>Choose your Vehicle</option>
-            <option value="Lake Oconee">Pontoon</option>
-            <option value="Lake Sinclair">Ski Boat</option>
-            <option value="Lake Sinclair">Jetski</option>
+            <option value="Pontoon">Pontoon</option>
+            <option value="Ski Boat">Ski Boat</option>
+            <option value="Jetski">Jetski</option>
           </select>
         <!--  <label>Vehicle</label>--> <!-- took this out until it can be added well aesthetically -->
         </div>
@@ -68,11 +68,11 @@
         <!--START DATE-->
       <i class="material-icons prefix">event</i>
       <label for="startDate" class="active">Start Date</label>
-      <input id="startDate" type="text" class="datepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startDate">
+      <input id="startDate" name="startDate" type="text" class="datepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startDate">
         <!--END DATE-->
       <i class="material-icons prefix">event</i>
       <label for="endDate" class="active">End Date</label>
-      <input id="endDate" type="text" class="datepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="endDate">
+      <input id="endDate" name="endDate" type="date" class="datepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="endDate">
     </div>
 
 
@@ -80,13 +80,13 @@
       <!-- Start timer-->
       <div class="row">
         <i class="material-icons prefix">access_time</i>
-        <label for="endDate" class="active">Start Time</label>
-          <input id="startTime" type="text" class="timepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startTime">
+        <label for="startTime" class="active">Start Time</label>
+          <input id="startTime" name="startTime" type="text" class="timepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startTime">
 
           <!-- End timer-->
         <i class="material-icons prefix">access_time</i>
-        <label for="endDate" class="active">End Time</label>
-            <input id="endTime" type="text" class="timepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="endTime">
+        <label for="endTime" class="active">End Time</label>
+            <input id="endTime" name="endTime" type="text" class="timepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="endTime">
         </div>
 
 
@@ -96,14 +96,15 @@
       <div class="row">
         <div class="input-field col s6 m6">
           <i class="material-icons prefix">credit_card</i>
-          <input id="creditCard" type="text" class="validate" name="creditCard">
+          <input id="creditCard" name="creditCard" type="text" class="validate" name="creditCard">
           <label for="creditCard">Credit Card</label>
         </div>
 
         <!--disabled input field for total-->
           <div class="input-field col s6 m6">
+          <i class="material-icons prefix">attach_money</i>
           <label for="total" class="active">Total:</label>
-        <input id="total" type="text" disabled="disabled" value="test">
+        <input id="total" name="total" typstartDatee="text" disabled="disabled" value="test">
       </div>
     </div>
 
@@ -126,7 +127,8 @@
       <div class = "row">
         <br>
         <div class="center-align">
-          <input type="submit" class="waves-effect waves-light btn "><i class="material-icons right">cloud</i>
+          <button id="button" onclick="setTimeout(myFunction, 3000)" type="submit" class="waves-effect waves-light btn ">Submit
+          <i class="material-icons right">send</i>
         </div>
       </div>
 
@@ -149,7 +151,7 @@
   <!--end date
 
   <label for="startdate" class="datepicker">Start Date</label>
-  <div class="input-field col s6 m6">
+  <div class="input-field col s6 m6">name="startDate"
     <i class="material-icons prefix">event</i>
     <input id="enddate" class="datepicker" name="endDate">
 
@@ -179,6 +181,13 @@
 <script>
 
   $(document).ready(function() {
+
+    console.log('This is the reservation page!');
+
+    $(".button-collapse").sideNav();
+
+    $('.parallax').parallax();
+
     $('select').material_select();
 
 /*
@@ -195,12 +204,32 @@
 
 //The api for the datepicker is here http://amsul.ca/pickadate.js/api/
 
-   var $input = $('.datepicker').pickadate(
+  var $input = $('.datepicker').pickadate({
+    onStart: function(){
 
+    },
+    selectYears: true,
+    selectMonths:true,
+    labelMonthNext: 'Next month',
+    labelMonthPrev: 'Previous month',
+    labelMonthSelect: 'Select a month',
+    labelYearSelect: 'Select a year',
+    monthsFull: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+    monthsShort: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+    weekdaysFull: [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+    weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+    weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Close'
 
-    )
+    });
 
-    var picker = $input.pickadate('picker')
+    $('#button').click(function(){
+
+    });
+
+  //  var picker = $input.pickadate('picker')
 
     /*
     // Using arrays formatted as [YEAR, MONTH, DATE].
@@ -219,30 +248,21 @@ picker.set('select', '2016-04-20', { format: 'mm-dd-yyyy' })
 
   // this is where the script for the pickatime functionshould go. Need to figure out how to get this working
 
-    $('.timepicker').pickatime();
+    $('.timepicker').pickatime({});
 
 
   });
+
+  function myFunction() {
+    alert('Hello');
+};
 
 
 
 </script>
 
 
-
-
-<script>
-    $(document).ready(function(){
-
-      console.log('This is the reservation page!');
-
-      $(".button-collapse").sideNav();
-
-      $('.parallax').parallax();
-    });
-  </script>
-
-<!-- import pickatime -->
+<!-- import pickatime-->
   <script type="text/javascript" src="pat/picker.time.js"></script>
 
 <% include footer %>

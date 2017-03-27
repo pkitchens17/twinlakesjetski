@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var reservations = require('./routes/reservation');
 
-//var router = express.Router();//newly added
+
 var app = express();
 
 var mongoose = require('mongoose');
@@ -30,7 +30,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(router); //newly added
+
+
+app.use(function(req, res, next) {
+
+    // log each request to the console
+    console.log(req.method, req.url);
+
+    // continue doing what we were doing and go to the route
+    next();
+});
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 

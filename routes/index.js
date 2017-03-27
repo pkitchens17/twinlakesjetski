@@ -5,16 +5,18 @@ var router = express.Router();
 
 
 
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Twin Lakes Jet Ski' });
 });
 
-
-
-
-
-
+//code for getting ejs files for links
+//reservation page
+router.get('/reservations', function(req, res) {
+  res.render('reservations.ejs');
+});
 
 
 //code for getting ejs files for links
