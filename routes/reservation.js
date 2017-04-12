@@ -3,9 +3,82 @@ var express = require('express');
 var database = require('./reservationsdb.js');
 var router = express.Router();
 
+//Create a new route with the  reservations/:reservations_id
+var reservationRoute = router.route('/reservations/:reservations_id');
 
 
+//end point for geting all of the reservations
+  router.get('/getreservations', function(req, res){
 
+    //  res.json({ message: 'finding reservations' });
+    database.find(function(err, reservations){
+      //  res.json({ message: 'finding reservations' });
+      if (err) {
+          return next(err);
+      }
+      else {
+        //  res.json({ message: 'finding reservations' });
+          res.json(reservations);
+      }
+    });
+  });
+
+
+//end point for getting a single reservation by id
+  reservationRoute.get(function(req, res){
+    //res.json({ message: 'finding reservation by id' });
+    //use the reservation model to find a specific reservation
+    database.findById(req.params.reservations_id, function(err, reservations){
+      if (err)
+      res.send(err);
+
+      res.json(reservations);
+
+    });
+  });
+
+  reservationRoute.put(function(req, res){
+    //use the reservation model to find a specific beer
+    database.findById(req.params.reservations_id, function(err, reservations){
+      if (err)
+      res.send(err);
+      var name = req.body.firstName;
+      console.log(name);
+      //update  reservation with new values from form
+      reservations.reservations.firstName = req.body.firstName;
+      reservations.reservations.firstName = req.body.firstName;
+      reservations.reservations.lastName = req.body.lastName;
+      reservations.reservations.phoneNumber = req.body.phoneNumber;
+      reservations.reservations.tube = req.body.tube;
+      reservations.reservations.email = req.body.email;
+
+
+      reservations.reservations.cost = req.body.total;
+      reservations.reservations.endTime = req.body.endTime;
+      reservations.reservations.startTime = req.body.startTime;
+      reservations.reservations.endDate =req.body.endDate;
+      reservations.reservations.startDate = req.body.startDate;
+
+      reservations.save(function(err) {
+        if (err) throw err;
+
+        res.json(reservations);
+        console.log('Reservation updated!');
+      });
+
+    });
+  });
+
+  //method for deleting a reservation by id
+  reservationRoute.delete(function(req, res) {
+    database.findByIdAndRemove(req.params.reservations_id, function(err, reservations){
+      if (err)
+      res.send(err);
+
+      res.json({ message: 'reservation removed!'});
+
+    });
+  });
 
 
 
@@ -52,4 +125,6 @@ module.exports = function(){
   return router;
 };
 */
+
+
 module.exports = router;
