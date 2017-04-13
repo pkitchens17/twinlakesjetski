@@ -1,0 +1,27 @@
+
+<% include header %>
+<main>
+  <div class="section white">
+    <div class="container row">
+        <h2 class="header">Admin Page</h2>
+      <p>
+                    <strong>id</strong>: <%= user._id %><br>
+                    <strong>email</strong>: <%= user.local.email %><br>
+                    <strong>password</strong>: <%= user.local.password %>
+                </p>
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+  </div>
+
+</main>
+
+<script>
+    $(document).ready(function(){
+
+      $(".button-collapse").sideNav();
+
+      $('.parallax').parallax();
+    });
+  </script>
+
+<% include footer %>
