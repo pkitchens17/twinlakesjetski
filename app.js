@@ -57,7 +57,11 @@ app.use('/reservation', reservations);
 
 
 //Passport script
-app.use(session({ secret: 'twinlakesjetski' })); // session secret
+app.use(session({
+  secret: 'twinlakesjetski',
+  resave: true,
+  saveUninitialized: true
+ })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
