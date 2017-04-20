@@ -1,0 +1,62 @@
+<% include header %>
+<main>
+<p>
+<br>
+<br>
+<br>
+
+</p>
+
+
+
+<!-- Modal Trigger
+ <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+-->
+
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal">
+   <div class="modal-content">
+     <h4>Admin Portal</h4>
+   </div>
+   <div class="modal-footer">
+     <form action="/signup" method="post">
+     <div class="form-group">
+         <label>Email</label>
+         <input type="text" class="form-control" name="email">
+     </div>
+     <div class="form-group">
+         <label>Password</label>
+         <input type="password" class="form-control" name="password">
+     </div>
+
+     <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+ </form>
+      <a href="/login" class="btn btn-default"><span class="fa fa-user"></span>Login</a>
+   </div>
+ </div>
+
+
+
+</main>
+
+
+
+<!--Script for the mobile menu-->
+<script>
+
+
+    $(document).ready(function(){
+
+
+      $(".button-collapse").sideNav();
+
+//script for the picture effect
+      $('.parallax').parallax();
+
+      //To open a modal using a trigger:
+      $('.modal').modal();
+        //script for opening the modal on page load
+       $('#modal1').modal('open');
+    });
+  </script>
+<% include footer %>

@@ -1,9 +1,14 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+var port     = process.env.PORT || 8080;
+var flash = require('connect-flash');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session      = require('express-session');
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 var index = require('./routes/index');
 var reservations = require('./routes/reservation');
@@ -49,6 +54,45 @@ app.use('/', index);
 app.use('/reservation', reservations);
 
 
+
+
+//Passport script
+app.use(session({
+  secret: 'twinlakesjetski',
+  resave: true,
+  saveUninitialized: true
+ })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+require('./routes/adminRoute.js')(app, passport);
+
+app.get('/reservationlist', function(req, res){
+  console.log("I recieved a get request");
+  db.reservations.find(function (err, reservations){
+    cosole.log(reservations);
+    res.json(reservations);
+  })
+});
+
+app.listen(port);
+//console.log('The magic happens on port ' + port);
+
+
+
+
+    require('./routes/passport')(passport); // pass passport for configuration
+
+
+
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect : '/profile', // redirect to the secure profile section
+        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
+
+//-----------------------------------------------------------------------------------------------------
 
 
 // these allow linking to the css pages and whatever else

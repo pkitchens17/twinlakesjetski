@@ -44,8 +44,8 @@ router.get('/aboutus', function(req, res) {
   res.render('aboutus.ejs');
 });
 
-router.get('/admin', function(req, res) {
-  res.render('admin.ejs');
+router.get('/login', function(req, res) {
+  res.render('login.ejs');
 });
 
 
