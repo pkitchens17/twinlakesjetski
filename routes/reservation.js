@@ -163,16 +163,9 @@ var reservationRoute = router.route('/reservations/:reservations_id');
     if (err) throw err;
 
     console.log('Reservation created!');
-  });
+
 
       res.redirect('/reservations')
-  });
-
-/*
-module.exports = function(){
-  return router;
-};
-*/
-
-
+    });
+});
 module.exports = router;
