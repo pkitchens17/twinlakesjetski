@@ -68,6 +68,13 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes/adminRoute.js')(app, passport);
 
+app.get('/reservationlist', function(req, res){
+  console.log("I recieved a get request");
+  db.reservations.find(function (err, reservations){
+    cosole.log(reservations);
+    res.json(reservations);
+  })
+});
 
 app.listen(port);
 //console.log('The magic happens on port ' + port);
