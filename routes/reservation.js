@@ -116,6 +116,7 @@ var reservationRoute = router.route('/reservations/:reservations_id');
   });
 
 
+
   //method for deleting a reservation by id
   reservationRoute.delete(function(req, res) {
     database.findByIdAndRemove(req.params.reservations_id, function(err, reservations){
