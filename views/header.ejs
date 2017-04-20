@@ -3,7 +3,7 @@
   <html>
     <head>
       <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
@@ -23,15 +23,16 @@
         <div class = "nav-wrapper">
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
-              <li><a href="/">Home</a></li>
-              <li><a href="/prices">Prices</a></li>
-              <li><a href="/jetskis">Jet Skis</a></li>
-              <li><a href="/reservations">Reservations</a></li>
-              <li><a href="/whattobring">What to Bring</a></li>
-              <li><a href="/directionsandcontact">Directions & Contact</a></li>
-              <li><a href="/aboutus">About Us</a></li>
+              <li id="/"><a href="/">Home</a></li>
+              <li id="prices"><a href="/prices">Prices</a></li>
+              <li id="jetskis"><a href="/jetskis">Jet Skis</a></li>
+              <li id="reservations"><a href="/reservations">Reservations</a></li>
+              <li id="what"><a href="/whattobring">What to Bring</a></li>
+              <li id="directions"><a href="/directionsandcontact">Directions & Contact</a></li>
+              <li id="aboutus"><a href="/aboutus">About Us</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
+
               <li><a href="/">Home</a></li>
               <li><a href="/prices">Prices</a></li>
               <li><a href="/jetskis">Jet Skis</a></li>
@@ -40,13 +41,50 @@
               <li><a href="/directionsandcontact">Directions & Contact</a></li>
               <li><a href="/aboutus">About Us</a></li>
               <li><a href="/login">Employees Only</a></li>
+
             </ul>
         </div>
       </nav>
 
 
     <script>
+
+/*
+    switch (window.location.pathname) {
+case '/':
+    alert(window.location.pathname);
+    $('#/').addClass('active');
+    break;
+case '/prices':
+    alert(window.location.pathname);
+    $('#prices').addClass('active')
+    break;
+case '/jetskis':
+    alert(window.location.pathname);
+    $('#jetskis').addClass('active')
+    break;
+case '/reservations':
+    alert(window.location.pathname);
+    $('#reservations').addClass('active')
+    break;
+case '/whattobring':
+    alert(window.location.pathname);
+    $('#what').addClass('active')
+    break;
+case'/directionsandcontact':
+    alert(window.location.pathname);
+    $('#directions').addClass('active')
+    break;
+case'/aboutus':
+    alert(window.location.pathname);
+    $('#aboutus').addClass('active')
+    break;
+  }
+*/
+
       $(document).ready(function(){
+
+
           $(".dropdown-button").dropdown();
           $(".button-collapse").sideNav();
         });
