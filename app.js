@@ -26,7 +26,9 @@ var db = mongoose.connect(configDB.url);
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+
+app.set('views', path.join(__dirname, '/public/views'));
+//app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -47,7 +49,7 @@ app.use(function(req, res, next) {
 });
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 
 app.use('/', index);
@@ -68,13 +70,25 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes/adminRoute.js')(app, passport);
 
+/*
+moved this to routes/reservation.js
 app.get('/reservationlist', function(req, res){
-  console.log("I recieved a get request");
-  db.reservations.find(function (err, reservations){
-    cosole.log(reservations);
-    res.json(reservations);
-  })
+  console.log("I recieved a reservationlist get request");
+  person1 = {
+    name:'tim',
+    email: 'tim@rmail.com',
+    number: '12345678'
+  };
+
+  var contactlist = [person1];
+  console.log("array created");
+  res.json(contactlist);
+ //$scope.contactlist = contactlist;
+
+
 });
+*/
+
 
 app.listen(port);
 //console.log('The magic happens on port ' + port);
