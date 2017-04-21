@@ -1,16 +1,42 @@
 <% include header %>
 
 <main>
+  <style>
+  div.section.white {
+    background-color: #c1c5c9 !important;
+    padding-bottom: 0px;
+  }
+
+img#imagetop {
+  float: right;
+}
+
+img#firstImage {
+  float:right;
+  border-radius: 5px;
+  background-color: #c1c5c9;
+  padding: 10px;
+   -ms-transform: rotate(7deg);/* IE 9 */
+   -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+   transform: rotate(7deg);
+   height: 200px;
+   width: 300px;
+   margin-right: 38px;
+}
+
+  </style>
+
   <div class="section white">
   <div class="row container">
     <h2 class="header">Pricing</h2>
   </div>
-
+  <img id="imagetop" src="WeRentFun.png">
+</div>
 <!--First divider-->
 <div class="row container">
       <h4 class="header">Jet Ski/Personal Watercraft</h4>
       <h5 class="header">Our jet skis</h5>
-        <p class="flow-text">Our Yamaha FX HO is Yamaha’s most dependable water craft. It is also the most fuel efficient Jet Ski on the market. They go 50 to 60 mph. We are fully licensed, Insured, and properly maintain our Jet Skis...</p>
+        <h6 class="flow-text">Our Yamaha FX HO is Yamaha’s most dependable water craft. It is also the most fuel efficient Jet Ski on the market. They go 50 to 60 mph. We are fully licensed, Insured, and properly maintain our Jet Skis...</h6>
           <table class="bordered">
             <thead>
               <tr>
@@ -44,9 +70,11 @@
         <br><br>
 </div>
 <!--End of first divider-->
-<hr>
+<br>
+  <img id="firstImage" src="JetSkiPic2.jpg">
 <!--Start of second divider-->
   <div class="row container">
+
       <h4 class="header">Boats Lake Oconee</h4>
       <h5 class="header">10 passenger 21ft Chaparral Ski Boat</h5>
         <p class="flow-text">4.3 liter Mercury engine for skiing</p>
@@ -67,7 +95,8 @@
         <br>
 </div>
 <!--End of second divider-->
-<hr>
+<br>
+<img id="firstImage" src="BoatPic1.jpg">
 <!--Start of third divider-->
 <div class="row container">
         <h5 class="header">9 passenger 20 ft Chaparral H2O Wake Tower Boat</h5>
@@ -89,7 +118,8 @@
           <br>
 </div>
 <!--End of third divider-->
-<hr>
+<br>
+<img id="firstImage" src="BoatPic2.jpg">
 <!--Start of fourth divider-->
 <div class="row container">
         <h5 class="header">12 passenger 21 ft Cobalt Ski Boat</h5>
@@ -113,7 +143,8 @@
 
 </div>
 <!--End of fourth divider-->
-<hr>
+<br>
+<img id="firstImage" src="BoatPic3.jpg">
 <!--Start of fifth divider-->
 <div class="row container">
         <h5 class="header">Pontoon Boat Hourly Rental</h5>
@@ -150,9 +181,10 @@
       <h5 class="header">Pontoon Boats/Ski Boat Multi day rentals also available.</h5>
           <p class="flow-text">Call for Pricing</p>
           <br>
+          <img id="firstImage" src="BoatPic4.jpg">
 </div>
 <!--End of fifth divider-->
-<hr>
+<br>
 <!--Start of sixth divider-->
 
 <div class="row container">
@@ -195,7 +227,4 @@
       $('.parallax').parallax();
     });
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
-    <script src="./controllers/controller.js"></script>
 <% include footer %>
