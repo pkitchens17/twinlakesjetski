@@ -6,6 +6,14 @@ var router = express.Router();
 //Create a new route with the  reservations/:reservations_id
 var reservationRoute = router.route('/reservations/:reservations_id');
 
+router.get('/reservationlist', function(req, res){
+  console.log("I recieved a reservationlist get request");
+  database.find(function (err, reservations){
+    console.log("made it this far");
+    console.log(reservations);
+    res.json(reservations);
+  })
+});
 
 //end point for geting all of the reservations
   router.get('/getreservations', function(req, res){
