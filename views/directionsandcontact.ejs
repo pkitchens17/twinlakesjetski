@@ -1,9 +1,16 @@
 <% include header %>
 <head>
 <style>
-.wrap1 {
+.collapsible {
   background-color: grey;
 }
+
+
+div.collapsible-header {
+  padding-left: 40%;
+}
+
+
 
 #map1 {
   float: left;
@@ -27,18 +34,18 @@ h2 {
 
 <br>
 <br>
-  <form class="container" method="POST" action="/reservation/reservations">
+  <form class="container" method="POST" action="https://formspree.io/cjdomaleski@gmail.com">
     <div class="row">
           <!-- input field for first name-->
       <div class="input-field col s6">
         <i class="material-icons prefix">account_circle</i>
-        <input id="firstName" type="text" class="validate"  name="firstName">
+        <input id="firstName" type="text" class="validate"  name="FirstName">
         <label for="firstName">First Name</label>
       </div>
       <!-- input field for last name-->
       <div class="input-field col s6">
         <i class="material-icons prefix">account_circle</i>
-        <input id="lastName" type="text" class="validate" name="lastName">
+        <input id="lastName" type="text" class="validate" name="LastName">
         <label for="lastName">Last Name</label>
       </div>
     </div>
@@ -47,28 +54,28 @@ h2 {
         <!-- input field for Phone number-->
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="phoneNumber" type="tel" class="validate" name="phoneNumber">
+          <input id="phoneNumber" type="tel" class="validate" name="Number">
           <label for="phoneNumber">Telephone</label>
         </div>
           <!-- input field for email-->
           <div class="input-field col s6">
             <i class="material-icons prefix">markunread_mailbox</i>
-            <input type="email" id="email" type="tel" class="validate" name="email">
+            <input type="email" id="email" type="tel" class="validate" name="Email">
             <label for="email">Email</label>
           </div>
         </div>
 
-
-
 <!--Check what locations you're interested in-->
 <div class="row">
-          <p>Check what locations you are interested in</p>
-          <input type="checkbox" class="filled-in" id="LakeSinclairCheckBox" />
+
+          <p>Check what locaitons you are interested in</p>
+          <input type="checkbox" class="filled-in" id="LakeSinclairCheckBox" name="LakeSinclairCheck"/>
+
           <label for="LakeSinclairCheckBox">Lake Sinclair</label>
 
           <br>
 
-          <input type="checkbox" class="filled-in" id="LakeOconeeCheckBox"  />
+          <input type="checkbox" class="filled-in" id="LakeOconeeCheckBox" name="LakeOconeeCheck" />
           <label for="LakeOconeeCheckBox">Lake Oconee</label>
 
 
@@ -77,18 +84,19 @@ h2 {
 
 <!--Check what vechiles you're interested in-->
 
-          <p>Check what vehicles you are intersted in</p>
-          <input type="checkbox" class="filled-in" id="PontoonCheckBox" />
+          <p>Check what vechiles you are intersted in</p>
+          <input type="checkbox" class="filled-in" id="PontoonCheckBox" name="PontoonCheck" />
+
           <label for="PontoonCheckBox">Pontoon</label>
 
           <br>
 
-          <input type="checkbox" class="filled-in" id="SkiBoatCheckBox" />
+          <input type="checkbox" class="filled-in" id="SkiBoatCheckBox" name="SkiBoatCheck"/>
           <label for="SkiBoatCheckBox">Ski boat</label>
 
           <br>
 
-          <input type="checkbox" class="filled-in" id="JetSkiCheckBox" />
+          <input type="checkbox" class="filled-in" id="JetSkiCheckBox" name="JetSkiCheck"/>
           <label for="JetSkiCheckBox">Jet Ski</label>
 </div>
 
@@ -100,7 +108,7 @@ h2 {
 
         <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
+                  <textarea id="textarea1" class="materialize-textarea" name="text-area"></textarea>
                   <label for="textarea1">Additonal comments/questions</label>
                 </div>
               </div>
@@ -122,45 +130,28 @@ h2 {
 </form>
 
 
-<h2>Need Directions?</h2>
-<div class="wrap1">
+<ul class="collapsible" data-collapsible="accordion">
+  <li>
+        <div class="collapsible-header"><i class="material-icons">location_on</i>Need Directions? Click Here!</div>
+          <div class="collapsible-body"><span>
 
-<div class="row">
+        <div class="wrap1">
+          <div class="row">
+            <div class="input-field col s6">
+              <iframe src="https://www.meteoblue.com/en/weather/widget/three/lake-sinclair_united-states-of-america_4204681?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style=" float: left; margin-left: 50px; width: 400px; height: 185px"></iframe>
+              <div id="map1" style="width: 400px; height: 400px;"></div>
+            </div>
 
-  <div class="input-field col s6">
-    <iframe src="https://www.meteoblue.com/en/weather/widget/three/lake-sinclair_united-states-of-america_4204681?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style=" float: left; margin-left: 50px; width: 400px; height: 185px"></iframe>
-    <div id="map1" style="width: 400px; height: 400px; background: yellow;">Map1 will go here</div>
-  </div>
-
-  <div class="input-field col s6">
-    <iframe src="https://www.meteoblue.com/en/weather/widget/three/lake-oconee_united-states-of-america_4204604?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="float: right; margin-right: 50px; width: 400px; height: 185px"></iframe>
-    <div id="map2" style="width: 400px; height: 400px; background: yellow;">Map2 will go here</div>
-  </div>
-
-</div>
-          <script type="text/javascript">
-                  function myMap() {
-                          var mapOptions1 = {      //mapOptions defines the properties for the map
-                                  center: new google.maps.LatLng(33.412588, -83.280146),  //center tells the map where to place the marker according to the lat. and long.
-                                  zoom: 16,       //specifies the zoom level for the map
-                                  mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
-                                  //---------------------------------------------------------------------
-                                  //THE HYBRID MAP TYPE DISAPPEARS WHEN I HAVE BOTH OF THE MAPS SHOWING |
-                                  //---------------------------------------------------------------------
-                          }
-
-                          var mapOptions2 = {      //mapOptions defines the properties for the map
-                                  center: new google.maps.LatLng(33.184465, -83.290489),  //center tells the map where to place the marker according to the lat. and long.
-                                  zoom: 16,       //specifies the zoom level for the map
-                                  mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
-                          }
-                          var map1 = new google.maps.Map(document.getElementById("map1"), mapOptions1);
-                          var map2 = new google.maps.Map(document.getElementById("map2"), mapOptions2);
-                  }
-
-          </script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn3rhrMywlxq5GQgNVWCaVEjHbycJzjhs&callback=myMap"></script>
+          <div class="input-field col s6">
+            <iframe src="https://www.meteoblue.com/en/weather/widget/three/lake-oconee_united-states-of-america_4204604?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="float: right; margin-right: 50px; width: 400px; height: 185px"></iframe>
+            <div id="map2" style="width: 400px; height: 400px;"></div>
+          </div>
         </div>
+        </div>
+</span></div>
+  </li>
+</ul>
+
 </main>
 
 
@@ -171,9 +162,48 @@ $(document).ready(function() {
    $(".button-collapse").sideNav();
 
     $('select').material_select();
-    //Script for the mobile menu
-    $(".button-collapse").sideNav();
-  });
+<<<<<<< HEAD
+
+    $('.collapsible').collapsible();
+
+});
 </script>
+<script>
+$(document).ready(function(){
+  myMap();
+});
+
+function myMap() {
+    var mapOptions1 = {      //mapOptions defines the properties for the map
+            center: new google.maps.LatLng(33.412588, -83.280146),  //center tells the map where to place the marker according to the lat. and long.
+            zoom: 16,       //specifies the zoom level for the map
+            mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
+            //---------------------------------------------------------------------
+            //THE HYBRID MAP TYPE DISAPPEARS WHEN I HAVE BOTH OF THE MAPS SHOWING |
+            //---------------------------------------------------------------------
+    }
+
+    var mapOptions2 = {      //mapOptions defines the properties for the map
+            center: new google.maps.LatLng(33.184465, -83.290489),  //center tells the map where to place the marker according to the lat. and long.
+            zoom: 16,       //specifies the zoom level for the map
+            mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
+    }
+    var map1 = new google.maps.Map(document.getElementById("map1"), mapOptions1);
+    var map2 = new google.maps.Map(document.getElementById("map2"), mapOptions2);
+}
+
+google.maps.event.addDomListener(window, 'load', myMap);
+$(document).bind("projectLoadComplete", myMap);
+
+
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn3rhrMywlxq5GQgNVWCaVEjHbycJzjhs&callback=myMap"></script>
+
+
+
+
+
 
 <% include footer %>

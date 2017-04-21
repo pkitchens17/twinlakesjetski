@@ -66,3 +66,8 @@ main {
   border-top: 2px solid #1A8BC4;
   margin-top: 45px;
 }
+
+
+.nav {
+  background-color: blue;
+}
