@@ -1,6 +1,6 @@
 
 <% include header %>
-
+<html ng-app="myApp">
 <main>
   <div class="section white">
     <div class="container row">
@@ -26,6 +26,7 @@
        <thead>
          <tr>
            <th>Name</th>
+           <th>Last Name</th>
            <th>Email</th>
            <th>Number</th>
            <th>Action</th>
@@ -38,15 +39,17 @@
             <td>{{reservations.email}}</td>
             <td>{{contactlist.number}}</td
          </tr> -->
-         <tr>
+         <tr ng-repeat="reservation in reservationslist">
            <td><input class="form-control" ng-model="reservation.firstName"></td>
-           <td><input class="form-control" ng-model="reservation.email"></td>
-           <td><input class="form-control" ng-model="reservation.number"></td>
            <td><input class="form-control" ng-model="reservation.lastName"></td>
+           <td><input class="form-control" ng-model="reservation.email"></td>
+           <td><input class="form-control" ng-model="reservation.phoneNumber"></td>
+
            <td><button class="btn btn-primary" ng-click="addContact()">Add Contact</button></td>
            <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button></td>
          </tr>
-         <tr ng-repeat="reservation in reservationlist">
+         <!--
+         <tr ng-repeat="reservation in reservationslist">
            <td>{{reservation.firstName}}</td>
            <td>{{reservation.email}}</td>
            <td>{{reservation.number}}</td>
@@ -54,6 +57,7 @@
            <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
            <td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
          </tr>
+       -->
        </tbody>
      </table>
 
