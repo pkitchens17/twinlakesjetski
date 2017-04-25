@@ -9,7 +9,6 @@ var reservationRoute = router.route('/reservations/:reservations_id');
 router.get('/reservationlist', function(req, res){
   console.log("I recieved a reservationlist get request");
   database.find(function (err, reservations){
-    console.log("made it this far");
     console.log(reservations);
     res.json(reservations);
   })
@@ -33,7 +32,7 @@ router.get('/reservationlist', function(req, res){
 
 
 //end point for getting a single reservation by id
-  reservationRoute.get(function(req, res){
+  router.get(function(req, res){
     //res.json({ message: 'finding reservation by id' });
     //use the reservation model to find a specific reservation
     database.findById(req.params.reservations_id, function(err, reservations){
@@ -46,7 +45,7 @@ router.get('/reservationlist', function(req, res){
     });
   });
 
-  reservationRoute.put(function(req, res){
+  router.put(function(req, res){
     //use the reservation model to find a specific beer
     database.findById(req.params.reservations_id, function(err, reservations){
       if (err)
@@ -60,8 +59,6 @@ router.get('/reservationlist', function(req, res){
       reservations.reservations.phoneNumber = req.body.phoneNumber;
       reservations.reservations.tube = req.body.tube;
       reservations.reservations.email = req.body.email;
-
-
       reservations.reservations.cost = req.body.total;
       reservations.reservations.endTime = req.body.endTime;
       reservations.reservations.startTime = req.body.startTime;
@@ -79,7 +76,7 @@ router.get('/reservationlist', function(req, res){
   });
 
   //method for deleting a reservation by id
-  reservationRoute.delete(function(req, res) {
+  router.delete(function(req, res) {
     database.findByIdAndRemove(req.params.reservations_id, function(err, reservations){
       if (err)
       res.send(err);
@@ -88,54 +85,6 @@ router.get('/reservationlist', function(req, res){
 
     });
   });
-
-
-  reservationRoute.put(function(req, res){
-    //use the reservation model to find a specific beer
-    database.findById(req.params.reservations_id, function(err, reservations){
-      if (err)
-      res.send(err);
-      var name = req.body.firstName;
-      console.log(name);
-      //update  reservation with new values from form
-      reservations.reservations.firstName = req.body.firstName;
-      reservations.reservations.firstName = req.body.firstName;
-      reservations.reservations.lastName = req.body.lastName;
-      reservations.reservations.phoneNumber = req.body.phoneNumber;
-      reservations.reservations.tube = req.body.tube;
-      reservations.reservations.email = req.body.email;
-
-
-      reservations.reservations.cost = req.body.total;
-      reservations.reservations.endTime = req.body.endTime;
-      reservations.reservations.startTime = req.body.startTime;
-      reservations.reservations.endDate =req.body.endDate;
-      reservations.reservations.startDate = req.body.startDate;
-
-      reservations.save(function(err) {
-        if (err) throw err;
-
-        res.json(reservations);
-        console.log('Reservation updated!');
-      });
-
-    });
-
-  });
-
-
-
-  //method for deleting a reservation by id
-  reservationRoute.delete(function(req, res) {
-    database.findByIdAndRemove(req.params.reservations_id, function(err, reservations){
-      if (err)
-      res.send(err);
-
-      res.json({ message: 'reservation removed!'});
-
-    });
-  });
-
 
 
   router.post('/reservations', function (req, res) {
@@ -149,21 +98,13 @@ router.get('/reservationlist', function(req, res){
     newReservation.reservations.phoneNumber = req.body.phoneNumber;
     newReservation.reservations.tube = req.body.tube;
     newReservation.reservations.email = req.body.email;
-
-
     newReservation.reservations.cost = req.body.total;
-    newReservation.reservations.endTime = req.body.endTime;
+  //  newReservation.reservations.endTime = req.body.endTime;
     newReservation.reservations.startTime = req.body.startTime;
     newReservation.reservations.endDate =req.body.endDate;
     newReservation.reservations.startDate = req.body.startDate;
-
-
-    //newReservation.reservations.boatID =
-
-
-    //newReservation.boats.boatID=;
-    newReservation.boats.location= req.body.location;
-    newReservation.boats.boatType=req.body.vehicle;
+    newReservation.reservations.location= req.body.location;
+    newReservation.reservations.boatID=req.body.vehicle;
 
 
   //save the reservation
