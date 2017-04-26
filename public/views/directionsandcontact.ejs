@@ -1,32 +1,5 @@
 <% include header %>
 <head>
-<style>
-.collapsible {
-  background-color: grey;
-}
-
-
-div.collapsible-header {
-  padding-left: 40%;
-}
-
-
-
-#map1 {
-  float: left;
-  margin-left: 50px;
-}
-#map2 {
-  float:right;
-  margin-right: 50px;
-}
-h2 {
-  text-align: center;
-  border-top: rgba(51,51,51,0.08) 3px solid;
-  border-bottom: rgba(51,51,51,0.08) 3px solid;
-  background-color: #ee6e73;
-}
-</style>
 
 </head>
 
@@ -68,7 +41,7 @@ h2 {
 <!--Check what locations you're interested in-->
 <div class="row">
 
-          <p>Check what locations you are interested in</p>
+          <p>Check what locaitons you are interested in</p>
           <input type="checkbox" class="filled-in" id="LakeSinclairCheckBox" name="LakeSinclairCheck"/>
 
           <label for="LakeSinclairCheckBox">Lake Sinclair</label>
@@ -84,7 +57,7 @@ h2 {
 
 <!--Check what vechiles you're interested in-->
 
-          <p>Check what vehicles you are intersted in</p>
+          <p>Check what vechiles you are intersted in</p>
           <input type="checkbox" class="filled-in" id="PontoonCheckBox" name="PontoonCheck" />
 
           <label for="PontoonCheckBox">Pontoon</label>
@@ -108,7 +81,7 @@ h2 {
 
         <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea" name="text-area"></textarea>
+                  <textarea id="textarea1" class="materialize-textarea" name="Comments"></textarea>
                   <label for="textarea1">Additonal comments/questions</label>
                 </div>
               </div>
@@ -123,7 +96,7 @@ h2 {
           </div>
         </div>
 
-        <p style="font-size: 8px;">*Note that this is not a reservation form. This form will email us about your
+        <p id="disclaimer">*Note that this is not a reservation form. This form will email us about your
           interest in Twin Lakes based upon the information provided. We wil respond
           within 24 hours with additional information.</p>
 
@@ -138,13 +111,13 @@ h2 {
         <div class="wrap1">
           <div class="row">
             <div class="input-field col s6">
-              <iframe src="https://www.meteoblue.com/en/weather/widget/three/lake-sinclair_united-states-of-america_4204681?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style=" float: left; margin-left: 50px; width: 400px; height: 185px"></iframe>
-              <div id="map1" style="width: 400px; height: 400px;"></div>
+              <iframe id="WeatherOne" src="https://www.meteoblue.com/en/weather/widget/three/lake-sinclair_united-states-of-america_4204681?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
+              <div id="map1"></div>
             </div>
 
           <div class="input-field col s6">
-            <iframe src="https://www.meteoblue.com/en/weather/widget/three/lake-oconee_united-states-of-america_4204604?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups" style="float: right; margin-right: 50px; width: 400px; height: 185px"></iframe>
-            <div id="map2" style="width: 400px; height: 400px;"></div>
+            <iframe id="WeatherTwo" src="https://www.meteoblue.com/en/weather/widget/three/lake-oconee_united-states-of-america_4204604?geoloc=fixed&nocurrent=0&noforecast=0&noforecast=1&days=4&tempunit=FAHRENHEIT&windunit=KILOMETER_PER_HOUR&layout=image"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
+            <div id="map2"></div>
           </div>
         </div>
         </div>
@@ -173,22 +146,46 @@ $(document).ready(function() {
 
 $(".collapsible-header").one("click", function(){
 
-    var mapOptions1 = {      //mapOptions defines the properties for the map
-            center: new google.maps.LatLng(33.412588, -83.280146),  //center tells the map where to place the marker according to the lat. and long.
-            zoom: 16,       //specifies the zoom level for the map
-            mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
-            //---------------------------------------------------------------------
-            //THE HYBRID MAP TYPE DISAPPEARS WHEN I HAVE BOTH OF THE MAPS SHOWING |
-            //---------------------------------------------------------------------
-    }
+                            var myCenter1 = new google.maps.LatLng(33.412588, -83.280146);
+                            var mapCanvas1 = document.getElementById("map1");
+                            var mapOptions1 = {      //mapOptions defines the properties for the map
+                                    center: new google.maps.LatLng(33.412588, -83.280146),  //center tells the map where to place the marker according to the lat. and long.
+                                    zoom: 16,       //specifies the zoom level for the map
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
+                            }
+                            var map1 = new google.maps.Map(mapCanvas1, mapOptions1);
+                            var marker1 = new google.maps.Marker({
+                              position:myCenter1,
+                              //animation:google.maps.Animation.BOUNCE    //makes the pin bounce up and down on the map
+                            });
+                            marker1.setMap(map1);
 
-    var mapOptions2 = {      //mapOptions defines the properties for the map
-            center: new google.maps.LatLng(33.184465, -83.290489),  //center tells the map where to place the marker according to the lat. and long.
-            zoom: 16,       //specifies the zoom level for the map
-            mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
-    }
-    var map1 = new google.maps.Map(document.getElementById("map1"), mapOptions1);
-    var map2 = new google.maps.Map(document.getElementById("map2"), mapOptions2);
+                            var infoWindow1 = new google.maps.InfoWindow({    //creates an information window on the map
+                              content: "Fish Tale Marina, 891 Greensboro Rd, Eatonton Ga. 31024"
+                            });
+                            infoWindow1.open(map1, marker1);
+
+                            //--------------------------------------------------------------------------------------------------
+
+                            var myCenter2 = new google.maps.LatLng(33.184465, -83.290489);
+                            var mapCanvas2 = document.getElementById("map2");
+                            var mapOptions2 = {      //mapOptions defines the properties for the map
+                                    center: new google.maps.LatLng(33.184465, -83.290489),  //center tells the map where to place the marker according to the lat. and long.
+                                    zoom: 16,       //specifies the zoom level for the map
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP //speciifies the type of map to display (ROADMAP, SATELLITE, HYBRID, and TERRAIN) are the usable map types
+                            }
+                            var map2 = new google.maps.Map(mapCanvas2, mapOptions2);
+                            var marker2 = new google.maps.Marker({
+                              position:myCenter2,
+                              //animation:google.maps.Animation.BOUNCE  //makes the pin bounce up and down on the map
+                            });
+                            marker2.setMap(map2);
+
+                            var infoWindow2 = new google.maps.InfoWindow({    //creates an information window on the map
+                              content: "Little River Marina, 3066 N Columbia St, Milledgeville, Ga. 31061"
+                            });
+                            infoWindow2.open(map2, marker2);
+
 });
 </script>
 
