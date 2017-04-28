@@ -220,7 +220,12 @@ function processEmail() {
 */
 
 //The api for the datepicker is here http://amsul.ca/pickadate.js/api/
+//seting the min date variable to the current date
+var minDate = new Date();
+var daysAdded = 1;
+minDate.setDate(minDate.getDate() + daysAdded);
 
+var maxDate = new Date(2017, 9, 31);
   var $input = $('.datepicker').pickadate({
     onStart: function(){
 
@@ -238,8 +243,9 @@ function processEmail() {
     weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
     today: 'Today',
     clear: 'Clear',
-    close: 'Close'
-
+    close: 'Close',
+    min: minDate,
+    max: maxDate
     });
 
     $('#button').click(function(){
@@ -264,6 +270,12 @@ picker.set('select', '2016-04-20', { format: 'mm-dd-yyyy' })
 */
 
 
+$('#startTime').pickatime({
+    min: [8,00],
+    max: [12, 00],
+    interval: 60
+});
+
 $('#endTime').pickatime({
     min:[14,00],
     max: [17, 30],
@@ -276,9 +288,7 @@ $('#endTime').pickatime({
 
   });
 
-  function myFunction() {
-    alert('Hello');
-};
+
 
 
 
