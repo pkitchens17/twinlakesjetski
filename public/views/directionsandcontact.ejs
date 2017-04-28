@@ -12,13 +12,13 @@
           <!-- input field for first name-->
       <div class="input-field col s6">
         <i class="material-icons prefix">account_circle</i>
-        <input id="firstName" type="text" class="validate"  name="FirstName">
+        <input id="firstName" type="text" class="validate" required="" aria-required="true" name="FirstName">
         <label for="firstName">First Name</label>
       </div>
       <!-- input field for last name-->
       <div class="input-field col s6">
         <i class="material-icons prefix">account_circle</i>
-        <input id="lastName" type="text" class="validate" name="LastName">
+        <input id="lastName" type="text" class="validate" required="" aria-required="true" name="LastName">
         <label for="lastName">Last Name</label>
       </div>
     </div>
@@ -27,31 +27,29 @@
         <!-- input field for Phone number-->
         <div class="input-field col s6">
           <i class="material-icons prefix">phone</i>
-          <input id="phoneNumber" type="tel" class="validate" name="Number">
+          <input id="phoneNumber" type="tel" class="validate" required="" aria-required="true" name="Number">
           <label for="phoneNumber">Telephone</label>
         </div>
           <!-- input field for email-->
           <div class="input-field col s6">
             <i class="material-icons prefix">markunread_mailbox</i>
-            <input type="email" id="email" type="tel" class="validate" name="Email">
-            <label for="email">Email</label>
+            <input type="email" id="email" type="tel" class="validate" required="" aria-required="true" name="Email">
+            <label for="email" data-error="Please enter a vailed email address" data-success="">Email</label>
           </div>
         </div>
 
 <!--Check what locations you're interested in-->
-<div class="row">
-
-          <p>Check what locaitons you are interested in</p>
-          <input type="checkbox" class="filled-in" id="LakeSinclairCheckBox" name="LakeSinclairCheck"/>
-
-          <label for="LakeSinclairCheckBox">Lake Sinclair</label>
-
+        <div class="row">
+          <div class="input-field col s6 m6">
+            <i class="material-icons prefix">add_location</i>
+            <select id="location" name="location" required="required" class="validate" >
+              <option value="" disabled selected>Choose your Location</option>
+              <option value="Lake Oconee">Lake Oconee</option>
+              <option value="Lake Sinclair">Lake Sinclair</option>
+            </select>
+            <label data-error="Select an option" data-success=""></label>
+          </div>
           <br>
-
-          <input type="checkbox" class="filled-in" id="LakeOconeeCheckBox" name="LakeOconeeCheck" />
-          <label for="LakeOconeeCheckBox">Lake Oconee</label>
-
-
           <br>
           <br>
 
@@ -142,6 +140,7 @@ $(document).ready(function() {
 </script>
 
 <script>
+$("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
 
 $(".collapsible-header").one("click", function(){
