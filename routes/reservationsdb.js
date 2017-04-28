@@ -23,7 +23,7 @@ var  reservationsSchema = mongoose.Schema({
       phoneNumber : String,
       email       :  { type: String, lowercase:true},
       location    :  { type: String, lowercase:true},
-      boatID      :  { type: String, lowercase:true}
+      resid       :   {type: String}
 
     },
 
