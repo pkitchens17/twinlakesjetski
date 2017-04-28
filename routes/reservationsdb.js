@@ -22,7 +22,8 @@ var  reservationsSchema = mongoose.Schema({
       lastName    : { type: String, lowercase:true},
       phoneNumber : String,
       email       :  { type: String, lowercase:true},
-      location    :  { type: String, lowercase:true}
+      location    :  { type: String, lowercase:true},
+      resid       :   {type: String}
     },
 
 });

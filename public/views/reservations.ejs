@@ -23,8 +23,8 @@
           <!-- input field for Phone number-->
           <div class="input-field col s6">
             <i class="material-icons prefix">phone</i>
-            <input id="phoneNumber" type="tel" class="validate" required="" aria-required="true" pattern="^\d{4}-\d{3}-\d{4}$" name="phoneNumber">
-            <label for="phoneNumber">Telephone(format: xxxx-xxx-xxxx)</label>
+            <input id="phoneNumber" type="tel" class="validate" required="" aria-required="true" pattern="^\d{3}-\d{3}-\d{4}$" name="phoneNumber">
+            <label for="phoneNumber">Telephone(format: xxx-xxx-xxxx)</label>
           </div>
             <!-- input field for email-->
             <div class="input-field col s6">
@@ -94,8 +94,8 @@
 
 
 
-
-      <!-- input field for credit card-->
+<!--
+   input field for credit card
       <div class="row">
         <div class="input-field col s6 m6">
           <i class="material-icons prefix">credit_card</i>
@@ -103,13 +103,15 @@
           <label for="creditCard">Credit Card</label>
         </div>
 
-        <!--disabled input field for total-->
+        disabled input field for total
           <div class="input-field col s6 m6">
           <i class="material-icons prefix">attach_money</i>
           <label for="total" class="active">Total:</label>
         <input id="total" name="total" typstartDatee="text" disabled="disabled" value="test">
       </div>
     </div>
+
+  -->
 
       <!-- Label for Switch -->
       <div class="center-align">
@@ -142,6 +144,12 @@
 
 <!-- initializing jquery for dropdown locations -->
 <script>
+
+function processEmail() {
+    document.getElementById("EmailVal").value = document.getElementById("email").value;
+
+    alert(document.getElementById("EmailVal").value);
+}
 
   $(document).ready(function() {
 
@@ -229,8 +237,8 @@ var maxDate = new Date(2017, 9, 31);
 */
 
 $('#endTime').pickatime({
-    min:[2,00],
-    max: [5, 30],
+    min:[14,00],
+    max: [17, 30],
     interval: 60
 });
 
