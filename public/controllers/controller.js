@@ -82,7 +82,7 @@ $scope.searchReservation = function(id){
 $scope.deleteReservation = function(id){
   var idstring = JSON.stringify(id);
   console.log(id);
-    $http.delete('/reservation/deletereservation/' + id)
+    $http.delete('/reservation/deletereservation/' + id);
 refresh();
         //.then(onReservationDeleteCompleted,  onError);
 

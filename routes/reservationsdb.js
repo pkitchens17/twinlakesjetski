@@ -15,7 +15,6 @@ var  reservationsSchema = mongoose.Schema({
       startTime   : String,
       endTime     : String,
       startDate   : String,
-    //  endDate     : String,
       tube        : Boolean,
       cost        : String,
       firstName   : { type: String, lowercase:true},

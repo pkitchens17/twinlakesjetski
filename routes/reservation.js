@@ -170,13 +170,14 @@ router.post('/reservations', function (req, res) {
 
   var newReservation = new database();
 
+  console.log(newReservation._id);
   newReservation.reservations.firstName = req.body.firstName;
   newReservation.reservations.lastName = req.body.lastName;
   newReservation.reservations.phoneNumber = req.body.phoneNumber;
   newReservation.reservations.tube = req.body.tube;
   newReservation.reservations.email = req.body.email;
   newReservation.reservations.cost = req.body.total;
- newReservation.reservations.endTime = req.body.endTime;
+  newReservation.reservations.endTime = req.body.endTime;
   newReservation.reservations.startTime = req.body.startTime;
   newReservation.reservations.startDate = req.body.startDate;
   newReservation.reservations.location= req.body.location;
