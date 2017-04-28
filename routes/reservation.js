@@ -178,7 +178,6 @@ router.post('/reservations', function (req, res) {
   newReservation.reservations.cost = req.body.total;
  newReservation.reservations.endTime = req.body.endTime;
   newReservation.reservations.startTime = req.body.startTime;
-  //newReservation.reservations.endDate =req.body.endDate;
   newReservation.reservations.startDate = req.body.startDate;
   newReservation.reservations.location= req.body.location;
   newReservation.reservations.boatID=req.body.vehicle;
