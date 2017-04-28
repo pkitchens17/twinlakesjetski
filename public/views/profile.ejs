@@ -23,16 +23,14 @@
      <table class="table">
        <thead>
          <tr>
-           <th>First Name</th>
-           <th>Last Name</th>
-           <th>Email</th>
-           <th>Number</th>
+
            <th>Date</th>
            <th>Start Time</th>
            <th>End Time</th>
            <th>Location</th>
            <th>Tube</th>
            <th>id</th>
+
 
            <th>Action</th>
            <th>&nbsp;</th>
@@ -61,6 +59,7 @@
   <td><button class="btn btn-primary" ng-click="updateReservation(reservation.resid, reservation.firstName)">Update</button></td>
   <td><button class="btn btn-info" ng-click="deleteReservation(reservation.resid)">Delete</button></td>
 </tr>
+
          <!--
          <tr ng-repeat="reservation in reservationslist">
            <td>{{reservation.firstName}}</td>

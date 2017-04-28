@@ -8,13 +8,13 @@
             <!-- input field for first name-->
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
-          <input id="firstName" type="text" class="validate" required="" aria-required="true" name="firstName">
+          <input id="firstName" type="text" class="validate"  name="firstName">
           <label for="firstName">First Name</label>
         </div>
         <!-- input field for last name-->
         <div class="input-field col s6">
           <i class="material-icons prefix">account_circle</i>
-          <input id="lastName" type="text" class="validate" required="" aria-required="true" name="lastName">
+          <input id="lastName" type="text" class="validate" name="lastName">
           <label for="lastName">Last Name</label>
         </div>
       </div>
@@ -23,13 +23,14 @@
           <!-- input field for Phone number-->
           <div class="input-field col s6">
             <i class="material-icons prefix">phone</i>
+
             <input id="phoneNumber" type="tel" class="validate" required="" aria-required="true" pattern="^\d{3}-\d{3}-\d{4}$" name="phoneNumber">
             <label for="phoneNumber">Telephone(format: xxx-xxx-xxxx)</label>
           </div>
             <!-- input field for email-->
             <div class="input-field col s6">
               <i class="material-icons prefix">markunread_mailbox</i>
-              <input type="email" id="email" type="tel" class="validate" required="" aria-required="true" name="email">
+              <input type="email" id="email" type="tel" class="validate" name="email">
               <label for="email">Email</label>
             </div>
           </div>
@@ -39,7 +40,7 @@
           <!-- dropdown menu for location -->
         <div class="input-field col s6 m6">
           <i class="material-icons prefix">add_location</i>
-          <select id="location" name="location" required="" aria-required="true">
+          <select id="location" name="location">
             <option value="" disabled selected>Choose your Location</option>
             <option value="Lake Oconee">Lake Oconee</option>
             <option value="Lake Sinclair">Lake Sinclair</option>
@@ -49,7 +50,7 @@
       <!-- dropdown menu for Vehicle type -->
         <div class="input-field col s6 m6">
           <i class="material-icons prefix">directions_boat</i>
-          <select id ="vehicle" name="vehicle" required="" aria-required="true">
+          <select id ="vehicle" name="vehicle">
             <option value="" disabled selected>Choose your Vehicle</option>
             <option value="Pontoon">Pontoon</option>
             <option value="Ski Boat">Ski Boat</option>
@@ -68,7 +69,7 @@
         <!--START DATE-->
       <i class="material-icons prefix">event</i>
       <label for="startDate" class="active">Reservation Date</label>
-      <input id="startDate" name="startDate" type="text" class="datepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startDate" required>
+      <input id="startDate" name="startDate" type="text" class="datepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startDate">
 
 
         <!--END DATE
@@ -84,7 +85,7 @@
       <div class="row">
         <i class="material-icons prefix">access_time</i>
         <label for="startTime" class="active">Start Time</label>
-          <input id="startTime" name="startTime" type="text" class="timepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startTime" >
+          <input id="startTime" name="startTime" type="text" class="timepicker" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" aria-owns="startTime">
 
           <!-- End timer-->
         <i class="material-icons prefix">access_time</i>
@@ -140,6 +141,46 @@
     </form>
 
 
+
+<!-- these are old date and time pickers keeping these for future reference
+
+<!-- start date
+<div class="row">
+  <label for="startdate" class="datepicker">Start Date</label>
+  <div class="input-field col s6 m6">
+
+    <i class="material-icons prefix">event</i>
+
+    <input id="startdate" class="datepicker" name="startDate">
+  </label>
+  </div>
+  <!--end date
+
+  <label for="startdate" class="datepicker">Start Date</label>
+  <div class="input-field col s6 m6">name="startDate"
+    <i class="material-icons prefix">event</i>
+    <input id="enddate" class="datepicker" name="endDate">
+
+  </div>
+</div>
+
+
+
+<div class ="input-field col s6 m6">
+  <i class="material-icons prefix">access_time</i>
+  <label for="startTime" class="timepicker">Start Time</label>
+    <input id="startTime" class="timepicker" name="startTime">
+</div>
+<!-- end time
+<div class ="input-field col s6 m6">
+  <i class="material-icons prefix">access_time</i>
+  <label for="endTime" class="timepicker">End Time</label>
+    <input id="endTime" class="timepicker" name="endTime">
+  </label>
+</div>
+-->
+
+
 </main>
 
 <!-- initializing jquery for dropdown locations -->
@@ -180,19 +221,12 @@ function processEmail() {
 
 //The api for the datepicker is here http://amsul.ca/pickadate.js/api/
 
- //seting the min date variable to the current date
-var minDate = new Date();
-var daysAdded = 1;
-minDate.setDate(minDate.getDate() + daysAdded);
-
-var maxDate = new Date(2017, 9, 31);
   var $input = $('.datepicker').pickadate({
-
     onStart: function(){
-    },
 
-    selectYears: false,
-    selectMonths: true,
+    },
+    selectYears: true,
+    selectMonths:true,
     labelMonthNext: 'Next month',
     labelMonthPrev: 'Previous month',
     labelMonthSelect: 'Select a month',
@@ -204,37 +238,31 @@ var maxDate = new Date(2017, 9, 31);
     weekdaysLetter: [ 'S', 'M', 'T', 'W', 'T', 'F', 'S' ],
     today: 'Today',
     clear: 'Clear',
-    close: 'Close',
-    min: minDate,
-    max: maxDate
+    close: 'Close'
+
     });
 
     $('#button').click(function(){
 
     });
 
-/*
-    function checkDate() {
-      if ($('#startDate').val() == '') {
-        $('#startDate').addClass('invalid')
-      } else {
-        $('#startDate').removeClass('invalid')
-      }
-    }
+  //  var picker = $input.pickadate('picker')
 
-    $('form').submit(function() {
-      checkDate();
-      return false;
-    });
+    /*
+    // Using arrays formatted as [YEAR, MONTH, DATE].
+picker.set('select', [2015, 3, 20])
 
-    $('#startDate').change(function() {
-      checkDate();
-    });
+// Using JavaScript Date objects.
+picker.set('select', new Date(2015, 3, 30))
 
-      $('#startDate').click(function(){
+// Using positive integers as UNIX timestamps.
+picker.set('select', 1429970887654)
 
-      });
+// Using a string along with the parsing format (defaults to `format` option).
+picker.set('select', '2016-04-20', { format: 'mm-dd-yyyy' })
+
 */
+
 
 $('#endTime').pickatime({
     min:[14,00],
@@ -242,18 +270,18 @@ $('#endTime').pickatime({
     interval: 60
 });
 
-$('#startTime').pickatime({
-                   min: [8,00],
-                   max:  [12, 00],
-                   interval: 60
+
+    $('.timepicker').pickatime({});
+
+
+  });
+
+  function myFunction() {
+    alert('Hello');
+};
 
 
 
-
-               });
-
-
-});
 </script>
 
 

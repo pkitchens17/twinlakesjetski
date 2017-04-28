@@ -5,7 +5,6 @@ var router = express.Router();
 //Create a new route with the  reservations/:reservations_id
 var reservationRoute = router.route('/reservations/:reservations_id');
 
-//returns all reservations
 router.get('/reservationlist', function(req, res){
   console.log("I recieved a reservationlist get request");
   database.find(function (err, reservations){
@@ -13,6 +12,7 @@ router.get('/reservationlist', function(req, res){
     res.json(reservations);
   })
 });
+
 
 //Route for finding one reservation
 router.get('/reservation/:id', function(req, res){
@@ -98,6 +98,7 @@ router.put('/updatereservation/:id/:firstName', function(req, res){
             res.json(docs);
 
  })
+
 
 });
 
