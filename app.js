@@ -70,28 +70,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 require('./routes/adminRoute.js')(app, passport);
 
-/*
-moved this to routes/reservation.js
-app.get('/reservationlist', function(req, res){
-  console.log("I recieved a reservationlist get request");
-  person1 = {
-    name:'tim',
-    email: 'tim@rmail.com',
-    number: '12345678'
-  };
-
-  var contactlist = [person1];
-  console.log("array created");
-  res.json(contactlist);
- //$scope.contactlist = contactlist;
-
-
-});
-*/
-
 
 app.listen(port);
-//console.log('The magic happens on port ' + port);
 
 
 

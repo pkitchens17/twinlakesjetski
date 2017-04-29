@@ -7,6 +7,7 @@
 
 <br>
 <br>
+<!-- to change the email that this is sent to you would insert it here at this action-->
   <form class="container" method="POST" action="https://formspree.io/cjdomaleski@gmail.com">
     <div class="row">
           <!-- input field for first name-->
@@ -142,7 +143,7 @@ $(document).ready(function() {
 <script>
 $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
-
+//This function controlls the google maps their api is here https://developers.google.com/maps/documentation/javascript/ 
 $(".collapsible-header").one("click", function(){
 
                             var myCenter1 = new google.maps.LatLng(33.412588, -83.280146);
@@ -187,7 +188,7 @@ $(".collapsible-header").one("click", function(){
 
 });
 </script>
-
+<!-- the key for the map api is in the url below  Key: AIzaSyAn3rhrMywlxq5GQgNVWCaVEjHbycJzjhs-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn3rhrMywlxq5GQgNVWCaVEjHbycJzjhs&callback=myMap"></script>
 
 <% include footer %>
