@@ -99,12 +99,16 @@ var onReservationDeleteCompleted = function(response){
 
 
 //update reservations
-$scope.updateReservation = function(id, firstName){
-  var namestring = JSON.stringify(id);
-  console.log(namestring);
-    $http.put("/reservation/updatereservation/" + id +"/"+ firstName)
-        .then(onUpdateReservationCompleted, onError);
-            console.log(id);
+$scope.updateReservation = function(id, firstName, lastName, email, phoneNumber, startDate, startTime, endTime, location, boatID, tube){
+  var idstring = JSON.stringify(id);
+  var namestring = JSON.stringify(firstName);
+  var laststring = JSON.stringify(lastName);
+  console.log(idstring);
+console.log("from controller" + namestring);
+  console.log("from controller" + laststring);
+    $http.put("/reservation/updatereservation/" + id + "/" + firstName + "/" + lastName + "/" + email + "/" + phoneNumber + "/" + startDate + "/" + startTime + "/" + endTime + "/" + location + "/" + boatID + "/" + tube)
+         .then(onUpdateReservationCompleted, onError);
+
 };
 
 var onUpdateReservationCompleted = function(response){

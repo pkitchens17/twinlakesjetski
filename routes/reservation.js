@@ -38,16 +38,118 @@ router.delete('/deletereservation/:id', function(req, res){
 
 });
 
-router.put('/updatereservation/:id/:firstName', function(req, res){
+
+router.put('/updatereservation/:id/:firstName/:lastName/:email/:phoneNumber/:startDate/:startTime/:endTime/:location/:boatID/:tube', function(req, res){
+  console.log("Updating reservation");
   var id =req.params.id;
   var name = req.params.firstName;
   console.log(id);
   console.log(name);
-  database.findAndModify({_id: id}, {$set: {firstName: name}});
+  database.findOne({_id: id}, function(err, foundObject){
+    if(err){
+      console.log(err);
+      res.status(500).send();
+    }else{
+      if(!foundObject){
+        res.status(404)
+      }else{
+        var foundFirstName= JSON.stringify(foundObject.reservations.firstName);
+        console.log(foundFirstName);
+        var reqFirstName = req.params.firstName;
+        console.log(reqFirstName);
+        if(req.params.firstName){
+        console.log("found the reservation!!!!!");
+        var foundFirstName= JSON.stringify(foundObject.reservations.firstName);
+        console.log(foundFirstName);
+
+        foundObject.reservations.firstName = req.params.firstName;
+        foundFirstName= JSON.stringify(foundObject.firstName);
+        console.log(foundFirstName);
+        console.log("reservation updated!!");
+        }
+        if(req.params.lastName){
+
+        foundObject.reservations.lastName = req.params.lastName;
+
+        }
+        if(req.params.phoneNumber){
+
+        foundObject.reservations.phoneNumber = req.params.phoneNumber;
+
+        }
+        if(req.params.email){
+
+        foundObject.reservations.email = req.params.email;
+
+        }
+        if(req.params.location){
+
+        foundObject.reservations.location = req.params.location;
+
+        }
+        if(req.params.boatID){
+
+        foundObject.reservations.boatID = req.params.boatID;
+
+        }
+        if(req.params.startTime){
+
+        foundObject.reservations.startTime = req.params.startTime;
+
+        }
+        if(req.params.endTime){
+
+        foundObject.reservations.endTime = req.params.endTime;
+
+        }
+        if(req.params.startDate){
+
+        foundObject.reservations.startDate = req.params.startDate;
+
+        }
+        if(req.params.tube){
+
+        foundObject.reservations.tube = req.params.tube;
+
+        }
+      }
+
+      foundObject.save(function(err, foundObject){
+        if(err){
+          console.log(err);
+          res.status(500).send();
+        }else{
+          console.log("Saving the updated reservations");
+          res.send(foundObject);
+          console.log(foundFirstName);
+          console.log("Saved updated reservations");
+        }
+      })
+
+    }
+  })
 
   //database.update({_id: id}, {$set: {firstName: name}});
   console.log("entry updated");
 });
+
+
+/*
+router.put('/updatereservation/:id/:firstName', function(req, res, next){
+  console.log("Updating reservation");
+  var id =req.params.id;
+  var name = req.params.firstName;
+  console.log(id);
+  console.log(name);
+  Post.findByIdAndUpdate(req.params.id, req.body, function(err, post){
+    if (err) return next(err);
+    res.json(post);
+  });
+
+  //database.update({_id: id}, {$set: {firstName: name}});
+  console.log("entry updated");
+});
+*/
 
 /*
 //route for updating a reservation

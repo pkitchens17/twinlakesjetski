@@ -20,6 +20,19 @@
   <div class="container" ng-controller="AppCtrl">
      <h1>Reservation List</h1>
 
+
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search"  ng-model="searchText" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <!-- I've put "red-text" class to emphasize -->
+          <i class="material-icons red-text">close</i>
+        </div>
+      </form>
+    </div>
+
+
      <table class="table">
        <thead>
          <tr>
@@ -31,6 +44,7 @@
            <th>Start Time</th>
            <th>End Time</th>
            <th>Location</th>
+           <th>Vehicle</th>
            <th>Tube</th>
            <th>id</th>
 
@@ -45,7 +59,7 @@
             <td>{{reservations.email}}</td>
             <td>{{contactlist.number}}</td
          </tr> -->
-         <tr ng-repeat="reservation in reservationslist">
+         <tr ng-repeat="reservation in reservationslist | filter:searchText">
   <td><input class="form-control" ng-model="reservation.firstName"></td>
   <td><input class="form-control" ng-model="reservation.lastName"></td>
   <td><input class="form-control" ng-model="reservation.email"></td>
@@ -54,12 +68,13 @@
   <td><input class="form-control" ng-model="reservation.startTime"></td>
   <td><input class="form-control" ng-model="reservation.endTime"></td>
   <td><input class="form-control" ng-model="reservation.location"></td>
+  <td><input class="form-control" ng-model="reservation.boatID"></td>
   <td><input class="form-control" ng-model="reservation.tube"></td>
   <td><input class="form-control" ng-model="reservation.resid"></td>
 
 
 
-  <td><button class="btn btn-primary" ng-click="updateReservation(reservation.resid, reservation.firstName)">Update</button></td>
+  <td><button class="btn btn-primary" ng-click="updateReservation(reservation.resid, reservation.firstName, reservation.lastName, reservation.email, reservation.phoneNumber, reservation.startDate, reservation.startTime, reservation.endTime, reservation.location, reservation.boatID)">Update</button></td>
   <td><button class="btn btn-info" ng-click="deleteReservation(reservation.resid)">Delete</button></td>
 </tr>
 
